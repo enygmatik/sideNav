@@ -1,0 +1,128 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+}
+.container__name {
+  margin: 0;
+  font-family: "Helvetica Neue";
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 16px;
+  letter-spacing: 4px;
+  padding: 10px;
+}
+.control {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.content {
+  width: 100%;
+}
+.sideNav--animate,
+.sideNav__container,
+.navHeader__second,
+.sideNav__second {
+  transition: 0.35s transform ease;
+}
+.sideNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.sideNav:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  will-change: opacity;
+  transition: opacity 0.3s cubic-bezier(0, 0, 0.3, 1);
+}
+.sideNav__container {
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  display: inline-block;
+  transform: translateX(-100%);
+  will-change: transform;
+}
+.sideNav__header {
+  position: relative;
+  height: 80px;
+  width: 100%;
+}
+.navHeader__main,
+.navHeader__second {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.navHeader__main {
+  background: #000;
+  z-index: 1;
+}
+.navHeader__second {
+  background: #555;
+  z-index: 0;
+}
+.sideNav__menu {
+  display: flex;
+  position: relative;
+  height: calc(100% - 80px);
+}
+.sideNav__main,
+.sideNav__second {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 300px;
+  height: 100%;
+}
+.sideNav__main {
+  background: #d76160;
+  z-index: 1;
+}
+.sideNav__second {
+  background: rgba(215,97,96,0.65);
+  z-index: 0;
+}
+.is-open-sideNav {
+  pointer-events: all;
+}
+.is-open-sideNav:before {
+  opacity: 1;
+}
+.is-open-sideNav .sideNav__container {
+  transform: translateX(0);
+}
+.is-closed-sideNav .sideNav__second {
+  transform: translateX(0);
+}
+.is-closed-sideNav .navHeader__second {
+  transform: translateX(0);
+}
+.is-open-subMenu .sideNav__second {
+  transform: translateX(100%);
+}
+.is-open-subMenu .navHeader__second {
+  transform: translateX(100%);
+}
+.is-closed-subMenu .navHeader__second {
+  z-index: 3;
+}
